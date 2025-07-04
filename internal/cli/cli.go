@@ -14,7 +14,7 @@ type CliCommand struct {
 	Description string
 	Callback    func(
 		CmdMap,
-		*pokedata.FetchConfig,
+		*pokedata.AppData,
 		*pokecache.Cache,
 		string,
 	) error

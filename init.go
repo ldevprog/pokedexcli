@@ -33,14 +33,20 @@ func initCommands() cli.CmdMap {
 			Description: "Displays list of Pokémon located on area provided as argument",
 			Callback:    commands.CommandExplore,
 		},
+		"catch": {
+			Name:        "catch",
+			Description: "Throws a Pokeball at pokemon to catch. Provide pokemon name as an argument",
+			Callback:    commands.CommandCatch,
+		},
 	}
 }
 
-func initConfig() pokedata.FetchConfig {
-	return pokedata.FetchConfig{
+func initConfig() pokedata.AppData {
+	return pokedata.AppData{
 		Locations: pokedata.FetchLocationsData{
 			Next:     "https://pokeapi.co/api/v2/location-area?offset=0&limit=20",
 			Previous: nil,
 		},
+		Pokedex: make(map[string]pokedata.Pokemon),
 	}
 }

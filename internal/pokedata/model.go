@@ -1,8 +1,10 @@
 package pokedata
 
-type FetchConfig struct {
+type AppData struct {
 	Locations FetchLocationsData
 	Location  FetchLocationData
+	Pokemon   Pokemon
+	Pokedex   map[string]Pokemon
 }
 
 type FetchLocationsData struct {
@@ -22,4 +24,9 @@ type PokemonEncounter struct {
 type Entity struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
+}
+
+type Pokemon struct {
+	Name           string `json:"name"`
+	BaseExperience int    `json:"base_experience"`
 }
