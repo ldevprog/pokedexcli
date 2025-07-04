@@ -6,16 +6,25 @@ import (
 	"sort"
 
 	"github.com/levon-dalakyan/pokedexcli/internal/cli"
+	"github.com/levon-dalakyan/pokedexcli/internal/pokecache"
 	"github.com/levon-dalakyan/pokedexcli/internal/pokedata"
 )
 
-func CommandExit(cliCommands cli.CmdMap, config *pokedata.LocationAreasData) error {
+func CommandExit(
+	cliCommands cli.CmdMap,
+	config *pokedata.LocationAreasData,
+	cache *pokecache.Cache,
+) error {
 	fmt.Println("Closing the Pokedex... Goodbye!")
 	os.Exit(0)
 	return nil
 }
 
-func CommandHelp(cliCommands cli.CmdMap, config *pokedata.LocationAreasData) error {
+func CommandHelp(
+	cliCommands cli.CmdMap,
+	config *pokedata.LocationAreasData,
+	cache *pokecache.Cache,
+) error {
 	var commands []cli.CliCommand
 	for _, cmd := range cliCommands {
 		commands = append(commands, cmd)

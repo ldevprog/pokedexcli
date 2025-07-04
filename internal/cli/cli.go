@@ -3,6 +3,7 @@ package cli
 import (
 	"strings"
 
+	"github.com/levon-dalakyan/pokedexcli/internal/pokecache"
 	"github.com/levon-dalakyan/pokedexcli/internal/pokedata"
 )
 
@@ -11,7 +12,7 @@ type CmdMap map[string]CliCommand
 type CliCommand struct {
 	Name        string
 	Description string
-	Callback    func(CmdMap, *pokedata.LocationAreasData) error
+	Callback    func(CmdMap, *pokedata.LocationAreasData, *pokecache.Cache) error
 }
 
 func CleanInput(text string) []string {

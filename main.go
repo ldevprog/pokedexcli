@@ -4,21 +4,28 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/levon-dalakyan/pokedexcli/internal/cli"
+	"github.com/levon-dalakyan/pokedexcli/internal/pokecache"
 	"github.com/levon-dalakyan/pokedexcli/internal/pokedata"
 )
 
 func main() {
 	cliCommands := initCommands()
 	config := initConfig()
+	cache := pokecache.NewCache(10 * time.Second)
 
-	runCli(cliCommands, &config)
+	runCli(cliCommands, &config, cache)
 }
 
-func runCli(cliCommands cli.CmdMap, config *pokedata.LocationAreasData) {
-	scanner := bufio.NewScanner(os.Stdin)
+func runCli(
+	cliCommands cli.CmdMap,
+	config *pokedata.LocationAreasData,
+	cache *pokecache.Cache,
+) {
 	prompt := "Pokedex >"
+	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
 		fmt.Print(prompt)
@@ -34,7 +41,7 @@ func runCli(cliCommands cli.CmdMap, config *pokedata.LocationAreasData) {
 			fmt.Println("Unknown command")
 			continue
 		}
-		err := command.Callback(cliCommands, config)
+		err := command.Callback(cliCommands, config, cache)
 		if err != nil {
 			fmt.Println(err)
 		}
