@@ -27,6 +27,21 @@ type Entity struct {
 }
 
 type Pokemon struct {
-	Name           string `json:"name"`
-	BaseExperience int    `json:"base_experience"`
+	Name           string        `json:"name"`
+	BaseExperience int           `json:"base_experience"`
+	Height         int           `json:"height"`
+	Weight         int           `json:"weight"`
+	Types          []PokemonType `json:"types"`
+	Stats          []PokemonStat `json:"stats"`
+}
+
+type PokemonType struct {
+	Slot int    `json:"slot"`
+	Type Entity `json:"type"`
+}
+
+type PokemonStat struct {
+	BaseStat int    `json:"base_stat"`
+	Effort   int    `json:"effort"`
+	Stat     Entity `json:"stat"`
 }

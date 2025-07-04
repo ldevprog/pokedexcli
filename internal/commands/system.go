@@ -42,10 +42,9 @@ func CommandHelp(
 		commandsOut += fmt.Sprintf("%s: %s\n", cmd.Name, cmd.Description)
 	}
 
-	fmt.Printf(`Welcome to the Pokedex!
-Usage:
-
-%s`, commandsOut)
+	fmt.Println("Welcome to the Pokedex!")
+	fmt.Println("Usage:")
+	fmt.Print(commandsOut)
 
 	return nil
 }

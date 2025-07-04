@@ -38,6 +38,11 @@ func initCommands() cli.CmdMap {
 			Description: "Throws a Pokeball at pokemon to catch. Provide pokemon name as an argument",
 			Callback:    commands.CommandCatch,
 		},
+		"inspect": {
+			Name:        "inspect",
+			Description: "Inspect already caught pokemon. Use name as an argument",
+			Callback:    commands.CommandInspect,
+		},
 	}
 }
 
