@@ -41,3 +41,22 @@ func CommandInspect(
 
 	return nil
 }
+
+func CommandPokedex(
+	cliCommands cli.CmdMap,
+	config *pokedata.AppData,
+	cache *pokecache.Cache,
+	argument string,
+) error {
+	if len(config.Pokedex) == 0 {
+		fmt.Println("There are no pokemons in your pokedex")
+		return nil
+	}
+
+	fmt.Println("Your Pokedex:")
+	for _, p := range config.Pokedex {
+		fmt.Printf("\t- %s\n", p.Name)
+	}
+
+	return nil
+}
