@@ -21,7 +21,7 @@ func main() {
 
 func runCli(
 	cliCommands cli.CmdMap,
-	config *pokedata.LocationAreasData,
+	config *pokedata.FetchConfig,
 	cache *pokecache.Cache,
 ) {
 	prompt := "Pokedex >"
@@ -36,12 +36,16 @@ func runCli(
 			continue
 		}
 		inputCommand := cleanedInput[0]
+		var inputArgument string
+		if len(cleanedInput) > 1 {
+			inputArgument = cleanedInput[1]
+		}
 		command, ok := cliCommands[inputCommand]
 		if !ok {
 			fmt.Println("Unknown command")
 			continue
 		}
-		err := command.Callback(cliCommands, config, cache)
+		err := command.Callback(cliCommands, config, cache, inputArgument)
 		if err != nil {
 			fmt.Println(err)
 		}

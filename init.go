@@ -28,12 +28,19 @@ func initCommands() cli.CmdMap {
 			Description: "Displays 20 PREV Poke Location Areas",
 			Callback:    commands.CommandMapB,
 		},
+		"explore": {
+			Name:        "explore",
+			Description: "Displays list of Pokémon located on area provided as argument",
+			Callback:    commands.CommandExplore,
+		},
 	}
 }
 
-func initConfig() pokedata.LocationAreasData {
-	return pokedata.LocationAreasData{
-		Next:     "https://pokeapi.co/api/v2/location-area",
-		Previous: nil,
+func initConfig() pokedata.FetchConfig {
+	return pokedata.FetchConfig{
+		Locations: pokedata.FetchLocationsData{
+			Next:     "https://pokeapi.co/api/v2/location-area?offset=0&limit=20",
+			Previous: nil,
+		},
 	}
 }

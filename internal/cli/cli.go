@@ -12,7 +12,12 @@ type CmdMap map[string]CliCommand
 type CliCommand struct {
 	Name        string
 	Description string
-	Callback    func(CmdMap, *pokedata.LocationAreasData, *pokecache.Cache) error
+	Callback    func(
+		CmdMap,
+		*pokedata.FetchConfig,
+		*pokecache.Cache,
+		string,
+	) error
 }
 
 func CleanInput(text string) []string {

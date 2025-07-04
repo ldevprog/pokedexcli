@@ -12,8 +12,9 @@ import (
 
 func CommandExit(
 	cliCommands cli.CmdMap,
-	config *pokedata.LocationAreasData,
+	config *pokedata.FetchConfig,
 	cache *pokecache.Cache,
+	argument string,
 ) error {
 	fmt.Println("Closing the Pokedex... Goodbye!")
 	os.Exit(0)
@@ -22,8 +23,9 @@ func CommandExit(
 
 func CommandHelp(
 	cliCommands cli.CmdMap,
-	config *pokedata.LocationAreasData,
+	config *pokedata.FetchConfig,
 	cache *pokecache.Cache,
+	argument string,
 ) error {
 	var commands []cli.CliCommand
 	for _, cmd := range cliCommands {
